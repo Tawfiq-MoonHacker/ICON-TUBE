@@ -16,7 +16,7 @@ def create_contract(address):
         solc_version="0.8.0")
     
     
-    metis_network = "https://andromeda.metis.io/?owner=1088"
+    icon_network = "https://sejong.net.solidwallet.io/"
     
     contract_id, contract_interface = compiled_sol.popitem()
     
@@ -28,7 +28,7 @@ def create_contract(address):
     abi = contract_interface['abi']
     
     
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     
     
     # set pre-funded account as sender
