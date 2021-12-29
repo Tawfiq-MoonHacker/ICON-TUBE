@@ -64,7 +64,7 @@ app.config['UPLOAD_FOLDER'] = 'static/videos/'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-metis_network = "https://andromeda.metis.io/?owner=1088"
+icon_network = "https://sejong.net.solidwallet.io/"
 client = ipfsApi.Client('127.0.0.1', 5001) 
 
 
@@ -280,7 +280,7 @@ def load_user(user_id):
     if user:         
         try:
 
-            w3 = Web3(Web3.HTTPProvider(metis_network))
+            w3 = Web3(Web3.HTTPProvider(icon_network))
 
             #it checks if there is a payment
             balance = w3.eth.get_balance(user.address)
@@ -395,7 +395,8 @@ def signup():
 
     if form.validate_on_submit():
         
-        w3 = Web3(Web3.HTTPProvider(metis_network))
+        w3 = Web3(Web3.HTTPProvider(icon_network))
+        
         
         hashed_password = generate_password_hash(form.password.data, method='sha256')
         email = request.form['email']
