@@ -4,7 +4,7 @@ import time
 from create_contract import create_contract
 from credentials import address_owner 
 
-metis_network = "https://andromeda.metis.io/?owner=1088"
+icon_network = "https://sejong.net.solidwallet.io/"
 main_address = address_owner
 contract = create_contract(main_address)
 
@@ -22,7 +22,7 @@ def moveDecimalPoint(num, decimal_places):
 
 #sending eth to other accounts
 def transfer_coins(account_send,account_recv,private_key,quantity):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
 
     balance_send = moveDecimalPoint(w3.eth.get_balance(account_send),-18)
     
@@ -43,14 +43,14 @@ def transfer_coins(account_send,account_recv,private_key,quantity):
         tx_hash = w3.eth.sendRawTransaction(signed_tx.rawTransaction)
         
 def get_verify(address):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address=contract,abi=abi)
     return greeter.functions.get_verify(address).call()
 
 def verify(address):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address=contract,abi=abi)
@@ -58,7 +58,7 @@ def verify(address):
 
 
 def add_user(username,email,password,address_created,token,private_address,secret_api,public_api):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address = contract,abi = abi)
@@ -67,28 +67,28 @@ def add_user(username,email,password,address_created,token,private_address,secre
 
 #to get the number of videos that's been uploaded 
 def num_videos(address):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address=contract,abi=abi)
     return greeter.functions.num_videos(address).call()
 
 def add_video(hash,address_created,date,name,url):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address = contract,abi = abi)
     greeter.functions.add_video(hash,address_created,date,name,url).transact()
 
 def getvideo(address,num1):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address = contract,abi = abi)
     return greeter.functions.getvideo(address,num1).call()
 
 def delete_video(address,num1):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address=contract,abi=abi)
@@ -96,7 +96,7 @@ def delete_video(address,num1):
         greeter.functions.delete_video(address,num1).transact()
 
 def change_api(address,secret_api,public_api):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address = contract,abi = abi)
@@ -104,21 +104,21 @@ def change_api(address,secret_api,public_api):
 
 
 def check_api(address,secret_api,public_api):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address = contract,abi = abi)
     return greeter.functions.check_api(address,secret_api,public_api).call()
 
 def add_subscription(address,date):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address = contract,abi = abi)
     greeter.functions.add_subscription(address,date).transact()
 
 def get_subscription(address):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address = contract,abi = abi)
@@ -126,44 +126,32 @@ def get_subscription(address):
 
 
 def set_GB(address,gb):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address = contract,abi = abi)
     greeter.functions.set_GB(address,gb).transact()
 
 def get_GB(address):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address = contract,abi = abi)
     return greeter.functions.get_GB(address).call()
 
 def get_token(address):
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address 
     
     greeter = w3.eth.contract(address = contract,abi =abi)
     return greeter.functions.get_token(address).call()
 
 def get_addresses():
-    w3 = Web3(Web3.HTTPProvider(metis_network))
+    w3 = Web3(Web3.HTTPProvider(icon_network))
     w3.eth.default_account = main_address
     
     greeter = w3.eth.contract(address = contract,abi = abi)
     return greeter.function.get_addresses().call()
-
-# result = add_video("sdfdf","0xAB36979F5353131de195464d213C76AaDFd5a3EC","date","nameadf","url1")
-
-#result = getvideo("0xAB36979F5353131de195464d213C76AaDFd5a3EC",0)
-
-#print(result)
-# result = add_user("0x8E7a005Ed7Ee7cdED5430f7853D07d228E923759","name","df@gmail.com","password","0xAB36979F5353131de195464d213C76AaDFd5a3EC","token","private_address","secret_api","public_api")
-
-# verify("0xAB36979F5353131de195464d213C76AaDFd5a3EC")
-
-# result = get_verify("0xAB36979F5353131de195464d213C76AaDFd5a3EC")
-# print(result)
 
 
 
